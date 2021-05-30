@@ -1,0 +1,6 @@
+FROM jupyter/minimal-notebook
+EXPOSE 8080
+RUN pip install jupyter-dash
+RUN pip install mysql-connector-python
+  
+

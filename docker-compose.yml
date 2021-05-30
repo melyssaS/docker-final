@@ -1,0 +1,49 @@
+version: '3.1'
+
+services:
+    testdb_mysql:
+        build:
+            context: .
+            dockerfile: Dockerfile.mariadb
+        image: testdb_mysql
+        restart: always
+        command: --default-authentication-plugin=mysql_native_password --local-infile --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+        environment:
+            MYSQL_ROOT_PASSWORD: example
+            MYSQL_USER: user
+            MYSQL_PASSWORD: password
+            MYSQL_DATABASE: ICFES
+            LANG: C.UTF-8 # sets the encoding in the init.db scripts which are otherwise assumed to be ascii
+        ports:
+            - "3306:3306"
+        container_name: testdb_mysql
+        volumes:
+          - /tmp:/tmp
+
+    dash:
+        build:
+            context: .
+            dockerfile: Dockerfile.dash
+        container_name: dash_proyecto
+        volumes:
+        - .:/code
+        #command: python proyecto.py
+        ports:
+            - "8080:8080"
+        depends_on:
+        - testdb_mysql
+        command: ["./wait-for-it.sh", "testdb_mysql:3306", "--", "python", "proyecto.py"]
+
+    jupyter:
+        build:
+            context: .
+            dockerfile: Dockerfile.jupyter
+        environment:
+            - JUPYTER_TOKEN=password
+            - JUPYTER_ENABLE_LAB=yes     
+        volumes:
+            - .:/home/jovyan/work
+        ports:
+            - 8888:8888
+        container_name: jupyter
+
