@@ -122,7 +122,7 @@ app = JupyterDash(__name__)
 # App layout
 app.layout = html.Div([
 
-    html.H1("Web Application Dashboards with Dash", style={'text-align': 'center'}),
+    html.H1("Base de datos: ICFES", style={'text-align': 'center'}),
 
     dcc.Dropdown(id="slct_range",
                  options=[
