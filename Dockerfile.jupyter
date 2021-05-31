@@ -2,5 +2,10 @@ FROM jupyter/minimal-notebook
 EXPOSE 8080
 RUN pip install jupyter-dash
 RUN pip install mysql-connector-python
+RUN pip install pandas
+RUN pip install plotly==4.14.3
+RUN pip install numpy
+RUN pip install matplotlib
+
   
 
