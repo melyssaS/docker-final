@@ -34,7 +34,7 @@ Para iniciar en Play with Docker debe ejecutar los siguientes comandos:
 
 # Para acceder al Dash debe hacer lo siguiente ⚙️:
 
-**NOTA:** _Debe esperar a que se muestre el mensaje "MySQL Database connection successful en la terminal_
+**NOTA:** _Debe esperar a que se muestre el mensaje "MySQL Database connection successful" en la terminal_
 ![image5](https://cdn.discordapp.com/attachments/692187420728360980/848755109987221534/WhatsApp_Image_2021-05-30_at_9.11.54_PM.jpeg)
 
 ## Acceder al puerto 8080
