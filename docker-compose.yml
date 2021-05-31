@@ -32,7 +32,7 @@ services:
             - "8080:8080"
         depends_on:
         - testdb_mysql
-        command: ["./wait-for-it.sh", "testdb_mysql:3306", "--", "python", "proyecto.py"]
+        command: ["./wait-for-it.sh", "testdb_mysql:3306", "--", "python", "proyectoDash.py"]
 
     jupyter:
         build:
